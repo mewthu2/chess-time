@@ -3,13 +3,15 @@
 one:
   state: MyString
   turn: MyString
-  fenpgn: MyString
+  fen: MyString
+  pgn: MyString
   white_player_id: 1
   black_player_id: 1
 
 two:
   state: MyString
   turn: MyString
-  fenpgn: MyString
+  fen: MyString
+  pgn: MyString
   white_player_id: 1
   black_player_id: 1
