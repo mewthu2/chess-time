@@ -15,7 +15,8 @@ class GamesTest < ApplicationSystemTestCase
     click_on "New game"
 
     fill_in "Black player", with: @game.black_player_id
-    fill_in "Fenpgn", with: @game.fenpgn
+    fill_in "Fen", with: @game.fen
+    fill_in "Pgn", with: @game.pgn
     fill_in "State", with: @game.state
     fill_in "Turn", with: @game.turn
     fill_in "White player", with: @game.white_player_id
@@ -30,7 +31,8 @@ class GamesTest < ApplicationSystemTestCase
     click_on "Edit this game", match: :first
 
     fill_in "Black player", with: @game.black_player_id
-    fill_in "Fenpgn", with: @game.fenpgn
+    fill_in "Fen", with: @game.fen
+    fill_in "Pgn", with: @game.pgn
     fill_in "State", with: @game.state
     fill_in "Turn", with: @game.turn
     fill_in "White player", with: @game.white_player_id

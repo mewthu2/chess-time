@@ -26,6 +26,7 @@ class GamesController < ApplicationController
                      state: :in_progress,
                      white_player_id: params[:game][:white_player_id],
                      black_player_id: params[:game][:black_player_id])
+
     respond_to do |format|
       if @game.save
         Playable.create(game: @game, user_id: params[:game][:challenger_id])
@@ -40,10 +41,27 @@ class GamesController < ApplicationController
   end
 
   # PATCH/PUT /games/1 or /games/1.json
-  def update; end
+  def update
+    respond_to do |format|
+      if @game.update(game_params)
+        format.html { redirect_to game_url(@game), notice: 'Game was successfully updated.' }
+        format.json { render :show, status: :ok, location: @game }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @game.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /games/1 or /games/1.json
-  def destroy; end
+  def destroy
+    @game.destroy
+
+    respond_to do |format|
+      format.html { redirect_to games_url, notice: 'Game was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
 
